@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Etape 1E - ToDoList JSON</title>
+  <script>
+    // Liste des tâches (1D)
+    let listeTaches = [
+      {"idTache":"1","libelle":"Concevoir jeux sur Scratch","description":"Réalisation d'un jeu sérieux avec Scratch","dateCreation":"2025-09-17","dateEcheance":"2025-09-20","idPriorite":"1","idEtat":"1"},
+      {"idTache":"2","libelle":"Rédiger le rapport de projet","description":"Écrire la documentation finale du projet","dateCreation":"2025-09-18","dateEcheance":"2025-09-25","idPriorite":"2","idEtat":"2"},
+      {"idTache":"3","libelle":"Préparer la soutenance","description":"Créer les slides et répéter la présentation","dateCreation":"2025-09-19","dateEcheance":"2025-09-30","idPriorite":"3","idEtat":"1"}
+    ];
+
+    // Liste des priorités (1B)
+    let listePriorites = [
+      {"idPriorite":"1","priorite":"Importante"},
+      {"idPriorite":"2","priorite":"Moyenne"},
+      {"idPriorite":"3","priorite":"Faible"},
+      {"idPriorite":"4","priorite":"Non prioritaire"}
+    ];
+
+    // Liste des états (1C)
+    let listeEtats = [
+      {"idEtat":"1","etat":"En cours"},
+      {"idEtat":"2","etat":"Terminé"},
+      {"idEtat":"3","etat":"Annulé"}
+    ];
+
+    // Vérification dans la console
+    console.log("Liste des tâches :", listeTaches);
+    console.log("Liste des priorités :", listePriorites);
+    console.log("Liste des états :", listeEtats);
+  </script>
+</head>
+<body>
+  <h1>Étape 1E - ToDoList JSON</h1>
+  <p>Ouvrez la console (F12 → onglet Console) pour voir les données JSON affichées.</p>
+</body>
+</html>
