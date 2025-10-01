@@ -1,3 +1,32 @@
-[{"idTache":"1","libelle":"Concevoir jeux sur Scratch","description":"Réalisation d'un jeu sérieux avec Scratch","dateCreation":"2025-09-17","dateEcheance":"2025-09-20","idPriorite":"1","idEtat":"1"},
-{"idTache":"2","libelle":"Rédiger le rapport de projet","description":"Écrire la documentation finale du projet","dateCreation":"2025-09-18","dateEcheance":"2025-09-25","idPriorite":"2","idEtat":"2"},
-{"idTache":"3","libelle":"Préparer la soutenance","description":"Créer les slides et répéter la présentation","dateCreation":"2025-09-19","dateEcheance":"2025-09-30","idPriorite":"3","idEtat":"1"}]
+[
+  {
+    "idTache":"1",
+    "libelle":"Concevoir jeux sur Scratch",
+    "description":"Réalisation d'un jeu sérieux avec Scratch",
+    "dateCreation":"2025-09-17",
+    "dateEcheance":"2025-09-20",
+    "idPriorite":"1",
+    "idStatut":"1",
+    "idCategorie":"3"
+  },
+  {
+    "idTache":"2",
+    "libelle":"Rédiger le rapport de projet",
+    "description":"Écrire la documentation finale du projet",
+    "dateCreation":"2025-09-18",
+    "dateEcheance":"2025-09-25",
+    "idPriorite":"2",
+    "idStatut":"2",
+    "idCategorie":"1"
+  },
+  {
+    "idTache":"3",
+    "libelle":"Préparer l'ORAL",
+    "description":"Créer les slides et répéter la présentation",
+    "dateCreation":"2025-09-19",
+    "dateEcheance":"2025-09-30",
+    "idPriorite":"3",
+    "idStatut":"1",
+    "idCategorie":"1"
+  }
+]
