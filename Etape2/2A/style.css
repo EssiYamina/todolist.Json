@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+  color: #1e2a32;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  text-align: center;
+  background-color: #007b83;
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.baseline {
+  margin: 0;
+  font-weight: 500;
+}
+
+main {
+  flex: 1;
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro {
+  background: rgba(0, 123, 131, 0.08);
+  border: 1px solid rgba(0, 123, 131, 0.15);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+form {
+  background-color: white;
+  border-radius: 14px;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #007b83;
+  margin-bottom: 0.25rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+label {
+  font-weight: 600;
+  color: #2f3a44;
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 1rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #fdfefe;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #007b83;
+  box-shadow: 0 0 0 3px rgba(0, 123, 131, 0.15);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.required {
+  color: #d24141;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: #007b83;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  width: auto;
+  min-width: 160px;
+}
+
+button.secondary {
+  background-color: transparent;
+  color: #007b83;
+  border: 1px solid #007b83;
+}
+
+button:hover {
+  background-color: #009da5;
+}
+
+button.secondary:hover {
+  background-color: rgba(0, 123, 131, 0.1);
+}
+
+footer p {
+  font-size: 0.95rem;
+  margin: 0.15rem 0;
+}
+
+.credit {
+  opacity: 0.9;
+  font-size: 0.85rem;
+}
+
+@media screen and (max-width: 760px) {
+  main {
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  legend {
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

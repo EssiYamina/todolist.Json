@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Étape 2B - Formulaire ToDoList (écriture dynamique)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page">
+  <header>
+    <h1>To Do List</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Complétez les informations ci-dessous pour ajouter une tâche à votre liste. Tous les champs marqués d'un astérisque sont obligatoires.</p>
+      <noscript class="alert">Activez JavaScript pour charger les options de priorités, statuts et catégories.</noscript>
+    </section>
+
+    <form class="form-tache" id="taskForm">
+      <fieldset>
+        <legend>Informations sur la tâche</legend>
+
+        <div class="form-grid">
+          <label for="libelle">Titre de la tâche <span aria-hidden="true" class="required">*</span></label>
+          <input type="text" id="libelle" name="libelle" minlength="3" maxlength="80" placeholder="Ex : Préparer la soutenance" required>
+
+          <label for="description">Description <span aria-hidden="true" class="required">*</span></label>
+          <textarea id="description" name="description" rows="4" minlength="10" placeholder="Détails sur la tâche..." required></textarea>
+
+          <label for="dateCreation">Date de création <span aria-hidden="true" class="required">*</span></label>
+          <input type="date" id="dateCreation" name="dateCreation" required>
+
+          <label for="dateEcheance">Date d’échéance <span aria-hidden="true" class="required">*</span></label>
+          <input type="date" id="dateEcheance" name="dateEcheance" required>
+
+          <label for="priorite">Priorité <span aria-hidden="true" class="required">*</span></label>
+          <select id="priorite" name="priorite" required>
+            <option value="">Chargement…</option>
+          </select>
+
+          <label for="statut">Statut <span aria-hidden="true" class="required">*</span></label>
+          <select id="statut" name="statut" required>
+            <option value="">Chargement…</option>
+          </select>
+
+          <label for="categorie">Catégorie <span aria-hidden="true" class="required">*</span></label>
+          <select id="categorie" name="categorie" required>
+            <option value="">Chargement…</option>
+          </select>
+
+          <label for="commentaires">Notes complémentaires</label>
+          <textarea id="commentaires" name="commentaires" rows="3" placeholder="Ajoutez des détails supplémentaires si besoin"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="reset" class="secondary">Réinitialiser</button>
+          <button type="button" id="submitBtn" onclick="saveTask()">Enregistrer la tâche</button>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Équipe 3 — Yamina, Sarah, Carole & Fanny</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
