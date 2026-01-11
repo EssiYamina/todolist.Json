@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilan des tâches</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="page">
+  <header>
+    <h1>Bilan des tâches</h1>
+    <p>Tableau récapitulatif des tâches enregistrées dans le localStorage</p>
+  </header>
+
+  <main>
+    <div style="display:flex; justify-content:flex-end; margin-bottom: 1rem;">
+      <a href="index.html">⬅ Retour au formulaire</a>
+    </div>
+
+    <table style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Priorité</th>
+          <th>Statut</th>
+          <th>Catégorie</th>
+          <th>Date création</th>
+          <th>Date échéance</th>
+        </tr>
+      </thead>
+      <tbody id="tasksTbody">
+        <!-- lignes ajoutées en JS -->
+      </tbody>
+    </table>
+
+    <p id="emptyMsg" style="margin-top: 1rem;"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Équipe 3 — Yamina, Sarah, Carole & Fanny</p>
+  </footer>
+
+  <script src="bilan.js"></script>
+</body>
+</html>
