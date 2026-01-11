@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bilan des tâches</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="page">
   <header>
     <h1>Bilan des tâches</h1>
-    <p>Tableau récapitulatif des tâches enregistrées dans le localStorage</p>
+    <p>Gestion et archivage des tâches</p>
   </header>
 
   <main>
-    <div style="display:flex; justify-content:flex-end; margin-bottom: 1rem;">
+    <p style="text-align:right; margin-bottom:1rem;">
       <a href="index.html">⬅ Retour au formulaire</a>
-    </div>
+    </p>
 
-    <table style="width:100%; border-collapse: collapse;">
+    <table class="task-table">
       <thead>
         <tr>
           <th>Titre</th>
           <th>Priorité</th>
-          <th>Statut</th>
           <th>Catégorie</th>
           <th>Date création</th>
           <th>Date échéance</th>
+          <th>Statut / Actions</th>
         </tr>
       </thead>
       <tbody id="tasksTbody">
-        <!-- lignes ajoutées en JS -->
+        <!-- lignes injectées en JS -->
       </tbody>
     </table>
 
-    <p id="emptyMsg" style="margin-top: 1rem;"></p>
+    <p id="emptyMsg"></p>
   </main>
 
   <footer>
