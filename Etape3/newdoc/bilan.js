@@ -1,5 +1,5 @@
 /***********************
- * DONNÉES JSON (let)
+ * DONNÉES JSON
  ***********************/
 let priorities = [
   { idPriorite: "1", priorite: "Très importante" },
@@ -9,12 +9,6 @@ let priorities = [
   { idPriorite: "5", priorite: "Optionnelle" }
 ];
 
-let statuses = [
-  { idStatut: "1", statut: "En cours" },
-  { idStatut: "2", statut: "Terminée" },
-  { idStatut: "3", statut: "Annulée" }
-];
-
 let categories = [
   { idCategorie: "1", categorie: "Travail" },
   { idCategorie: "2", categorie: "Personnel" },
@@ -22,40 +16,28 @@ let categories = [
   { idCategorie: "4", categorie: "Loisirs" }
 ];
 
-/********************************
- * LISTE TÂCHES (portée globale)
- ********************************/
+let statuses = [
+  { idStatut: "1", statut: "En cours" },
+  { idStatut: "2", statut: "Terminée" },
+  { idStatut: "3", statut: "Annulée" }
+];
+
+/************************
+ * TÂCHES (globale)
+ ************************/
 let taskList = [];
 
-/********************************
- * LECTURE localStorage (getItem)
- ********************************/
-const stored = localStorage.getItem("todoTasks");
-if (stored) {
-  try {
-    taskList = JSON.parse(stored);
-    if (!Array.isArray(taskList)) taskList = [];
-  } catch (e) {
-    console.warn("Erreur JSON.parse :", e);
-    taskList = [];
-  }
+/************************
+ * LECTURE localStorage
+ ************************/
+function loadTasks() {
+  const stored = localStorage.getItem("todoTasks");
+  taskList = stored ? JSON.parse(stored) : [];
 }
 
-console.log("Tâches récupérées :", taskList);
-
-/*******************************************
- * Attendre que le document soit chargé
- * (onreadystatechange + readyState complete)
- *******************************************/
-document.onreadystatechange = function () {
-  if (document.readyState === "complete") {
-    renderTable();
-  }
-};
-
-/**********************
- * Générer le tableau
- **********************/
+/************************
+ * AFFICHAGE TABLEAU
+ ************************/
 function renderTable() {
   const tbody = document.getElementById("tasksTbody");
   const emptyMsg = document.getElementById("emptyMsg");
@@ -63,49 +45,76 @@ function renderTable() {
   tbody.innerHTML = "";
 
   if (taskList.length === 0) {
-    emptyMsg.textContent = "Aucune tâche enregistrée pour le moment.";
+    emptyMsg.textContent = "Aucune tâche enregistrée.";
     return;
   }
 
   emptyMsg.textContent = "";
 
-  // forEach() sur les tâches
-  taskList.forEach((task) => {
+  taskList.forEach(task => {
 
-    // find() pour retrouver les libellés à partir des identifiants
+    // 🔴 Archivage : on masque Terminée / Annulée
+    if (task.idStatut === "2" || task.idStatut === "3") return;
+
     const pr = priorities.find(p => p.idPriorite == task.idPriorite);
-    const st = statuses.find(s => s.idStatut == task.idStatut);
     const cat = categories.find(c => c.idCategorie == task.idCategorie);
 
-    const priorityLabel = pr ? pr.priorite : "(inconnue)";
-    const statusLabel = st ? st.statut : "(inconnu)";
-    const categoryLabel = cat ? cat.categorie : "(inconnue)";
+    const statusButtons = statuses.map(st => {
+      const isActive = st.idStatut === task.idStatut;
 
-    // Template literal + interpolation
-    const rowHtml = `
+      return `
+        <button
+          type="button"
+          data-taskid="${task.idTache}"
+          data-status="${st.idStatut}"
+          onclick="updateStatus(this)"
+          ${isActive ? "disabled class='status-active'" : ""}
+        >
+          ${st.statut}
+        </button>
+      `;
+    }).join("");
+
+    const rowHTML = `
       <tr>
-        <td>${escapeHtml(task.libelle || "")}</td>
-        <td>${escapeHtml(priorityLabel)}</td>
-        <td>${escapeHtml(statusLabel)}</td>
-        <td>${escapeHtml(categoryLabel)}</td>
-        <td>${escapeHtml(task.dateCreation || "")}</td>
-        <td>${escapeHtml(task.dateEcheance || "")}</td>
+        <td>${task.libelle}</td>
+        <td>${pr?.priorite || ""}</td>
+        <td>${cat?.categorie || ""}</td>
+        <td>${task.dateCreation}</td>
+        <td>${task.dateEcheance}</td>
+        <td>${statusButtons}</td>
       </tr>
     `;
 
-    // insertAdjacentHTML("beforeend")
-    tbody.insertAdjacentHTML("beforeend", rowHtml);
+    tbody.insertAdjacentHTML("beforeend", rowHTML);
   });
 }
 
-/**********************
- * Petit helper anti-bug HTML
- **********************/
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+/************************
+ * CHANGEMENT DE STATUT
+ ************************/
+function updateStatus(button) {
+  const taskId = button.dataset.taskid;
+  const newStatus = button.dataset.status;
+
+  loadTasks();
+
+  const task = taskList.find(t => t.idTache == taskId);
+  if (!task) return;
+
+  task.idStatut = newStatus;
+
+  localStorage.setItem("todoTasks", JSON.stringify(taskList));
+
+  renderTable();
 }
+
+/************************
+ * DOCUMENT READY
+ ************************/
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    loadTasks();
+    renderTable();
+  }
+};
