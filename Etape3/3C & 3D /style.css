@@ -1,0 +1,11 @@
+.task-table { width: 100%; border-collapse: collapse; background: #fff; }
+.task-table th, .task-table td { border: 1px solid #cfd8e3; padding: 0.6rem; text-align: center; }
+.task-table th { background: #007b83; color: #fff; }
+
+.task-table td button {
+  margin: 0.15rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+}
+
+.status-active { background: #aaa !important; cursor: default; }
