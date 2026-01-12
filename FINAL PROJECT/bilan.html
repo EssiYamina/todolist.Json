@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilan des tâches</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="bilan.js"></script>
+</head>
+
+<body class="page">
+  <header>
+    <h1>Bilan des tâches</h1>
+    <p class="baseline"></p>
+  </header>
+
+  <main>
+    <p class="navlink" style="text-align:right;">
+      <a href="index.html">⬅ Retour au formulaire</a>
+    </p>
+
+  <div class="filter-section">
+    <label for="sortSelect">Trier par :</label>
+    <select id="sortSelect" onchange="sortTasks()">
+      <option value="all">Toutes les tâches</option>
+      <option value="status-1">A faire</option>
+      <option value="status-2">En cours</option>
+      <option value="status-3">Terminée</option>
+      <option value="priority">Priorité (urgente → optionnelle)</option>
+      <option value="date">Date d'échéance (proche → lointaine)</option>
+    </select>
+  </div>
+
+  <table class="task-table">
+
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Priorité</th>
+          <th>Catégorie</th>
+          <th>Date création</th>
+          <th>Date échéance</th>
+          <th>Statut</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody id="tasksTbody">
+        <!-- Injecté en JS -->
+      </tbody>
+    </table>
+
+    <p id="emptyMsg" style="margin-top:1rem;"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Équipe 3 — Yamina, Sarah, Carole & Fanny</p>
+  </footer>
+
+
+  <script>
+    let listePriorites = [
+      {"idPriorite":"1","priorite":"Très urgente"},
+      {"idPriorite":"2","priorite":"Urgente"},
+      {"idPriorite":"3","priorite":"Importante"},
+      {"idPriorite":"4","priorite":"Peu importante"},
+      {"idPriorite":"5","priorite":"Optionnelle"}
+    ];
+
+    let listeStatuts = [
+      {"idStatut":"1","statut":"A faire"},
+      {"idStatut":"2","statut":"En cours"},
+      {"idStatut":"3","statut":"Terminée"}
+    ];
+
+    let listeCategories = [
+      {"idCategorie":"1","categorie":"Travail"},
+      {"idCategorie":"2","categorie":"Personnel"},
+      {"idCategorie":"3","categorie":"Études"},
+      {"idCategorie":"4","categorie":"Loisirs"},
+      {"idCategorie":"5","categorie":"Autre"}
+    ];
+  </script>
+  
+
+ 
+</body>
+</html>

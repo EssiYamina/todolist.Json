@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List Formulaire</title>
+  <link rel="stylesheet" href="style.css">
+
+  
+  <script>
+    
+    let listePriorites = [
+      {"idPriorite":"1","priorite":"Très importante"},
+      {"idPriorite":"2","priorite":"Importante"},
+      {"idPriorite":"3","priorite":"Moyenne"},
+      {"idPriorite":"4","priorite":"Peu importante"},
+      {"idPriorite":"5","priorite":"Optionnelle"}
+    ];
+
+ 
+    let listeStatuts = [
+      {"idStatut":"1","statut":"A faire"},
+      {"idStatut":"2","statut":"En cours"},
+      {"idStatut":"3","statut":"Terminée"},
+    ];
+
+    
+    let listeCategories = [
+      {"idCategorie":"1","categorie":"Travail"},
+      {"idCategorie":"2","categorie":"Personnel"},
+      {"idCategorie":"3","categorie":"Études"},
+      {"idCategorie":"4","categorie":"Loisirs"},
+      {"idCategorie":"5","categorie":"Autre"}
+    ];
+  </script>
+
+ 
+  <script src="script.js" defer></script>
+</head>
+
+<body class="page">
+  <header>
+    <h1>To Do List</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        Complétez les informations ci-dessous pour ajouter une tâche à votre liste.
+        Tous les champs marqués d'un astérisque sont obligatoires.
+      </p>
+      <noscript class="alert">
+        Activez JavaScript pour charger les listes dynamiques.
+      </noscript>
+    </section>
+
+    
+    <form class="form-tache" id="taskForm">
+      <fieldset>
+        <legend>Informations sur la tâche</legend>
+
+        <div class="form-grid">
+          <label for="libelle">Titre de la tâche <span class="required">*</span></label>
+          <input type="text" id="libelle" name="libelle" minlength="3" maxlength="80"
+                 placeholder="Ex : Préparer la soutenance" required>
+
+          <label for="description">Description </label>
+          <textarea id="description" name="description" rows="4" minlength="10"
+                    placeholder="Détails sur la tâche..."></textarea>
+
+          <label for="dateCreation">Date de création </label>
+          <input type="date" id="dateCreation" name="dateCreation">
+
+          <label for="dateEcheance">Date d’échéance </label>
+          <input type="date" id="dateEcheance" name="dateEcheance" >
+
+          <label for="priorite">Priorité <span class="required">*</span></label>
+          <select id="priorite" name="priorite" required>
+            <option value="">- Sélectionner -</option>
+          </select>
+
+          <label for="statut">Statut <span class="required">*</span></label>
+          <select id="statut" name="statut" required>
+            <option value="">- Sélectionner -</option>
+          </select>
+
+          <label for="categorie">Catégorie <span class="required">*</span></label>
+          <select id="categorie" name="categorie" required>
+            <option value="">- Sélectionner -</option>
+          </select>
+
+          <label for="commentaires">Notes complémentaires</label>
+          <textarea id="commentaires" name="commentaires" rows="3"
+                    placeholder="Ajoutez des détails supplémentaires si besoin"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="reset" class="secondary">Réinitialiser</button>
+          <button type="button" id="submitBtn" onclick="saveTask()">
+            Enregistrer la tâche
+          </button>
+        </div>
+        
+
+  
+        <div class="todo-button-container" style="margin-top: 2rem; text-align: center;">
+    <a href="bilan.html" class="todo-button"> Ma To Do </a>
+</div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Équipe 3 — Yamina, Sarah, Carole & Fanny</p>
+  </footer>
+  
+</body>
+</html>

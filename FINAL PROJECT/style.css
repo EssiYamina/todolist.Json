@@ -1,0 +1,470 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+  color: #1e2a32;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  text-align: center;
+  background-color: #007b83;
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.baseline { margin: 0; font-weight: 500; }
+
+main {
+  flex: 1;
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.intro {
+  background: rgba(0, 123, 131, 0.08);
+  border: 1px solid rgba(0, 123, 131, 0.15);
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+.alert {
+  display: block;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #fff2cf;
+  border: 1px solid #f3d27c;
+  color: #5d3d00;
+  font-weight: 600;
+}
+
+form {
+  background-color: white;
+  border-radius: 14px;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #007b83;
+  margin-bottom: 0.25rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+label { font-weight: 600; color: #2f3a44; }
+
+input, select, textarea, button {
+  font-size: 1rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #fdfefe;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #007b83;
+  box-shadow: 0 0 0 3px rgba(0, 123, 131, 0.15);
+  outline: none;
+}
+
+textarea { resize: vertical; min-height: 100px; }
+
+.required { color: #d24141; }
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: #007b83;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  width: auto;
+  min-width: 160px;
+}
+
+button.secondary {
+  background-color: transparent;
+  color: #007b83;
+  border: 1px solid #007b83;
+}
+
+button:hover { background-color: #009da5; }
+button.secondary:hover { background-color: rgba(0, 123, 131, 0.1); }
+
+footer p { font-size: 0.95rem; margin: 0.15rem 0; }
+.credit { opacity: 0.9; font-size: 0.85rem; }
+
+.navlink { margin: 0; }
+
+/* ---------- TABLEAU (bilan) ---------- */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.task-table th, .task-table td {
+  border: 1px solid #cfd8e3;
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.task-table th {
+  background-color: #007b83;
+  color: white;
+}
+
+/* Boutons statut */
+.task-table td button {
+  margin: 0.15rem;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  min-width: unset;
+  background-color: #e9ecef; 
+  color: #495057;
+  border: 1px solid #ced4da;
+  cursor: default;
+  transition: none;
+}
+
+.status-active {
+  background-color: #007b83 !important; /* Bleu principal */
+  color: white !important;
+  border-color: #007b83 !important;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 760px) {
+  main { padding: 1.25rem 1rem 2rem; }
+  form { padding: 1.5rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  legend { text-align: center; }
+  .actions { justify-content: center; }
+}
+
+/* Style pour le bouton de suppression */
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.delete-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  color: #e74c3c;
+}
+
+.delete-icon-btn:hover {
+  color: #c0392b;
+}
+
+/* Ajuster l'espacement pour les boutons de statut */
+.task-table td button:not(.delete-btn):not(.delete-icon-btn) {
+  margin-right: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  min-width: unset;
+}
+
+/* Style pour la colonne Actions */
+.task-table th:nth-child(7),
+.task-table td:nth-child(7) {
+  text-align: center;
+  width: 100px;
+}
+
+/* S'assurer que les boutons de statut restent sur la même ligne */
+td:nth-child(6) {
+  white-space: nowrap;
+}
+
+/* Style pour la colonne Actions */
+.task-table th:nth-child(7),
+.task-table td:nth-child(7) {
+  text-align: center;
+  width: 180px; /* Plus large pour deux boutons */
+  min-width: 160px;
+}
+
+/* Conteneur des boutons d'actions */
+.actions-column .btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+/* Bouton Modifier */
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-width: 90px;
+  width: 100%;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Bouton Supprimer */
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-width: 90px;
+  width: 100%;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Version avec boutons côte à côte sur les grands écrans */
+@media screen and (min-width: 768px) {
+  .actions-column .btn-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .actions-column .btn-container button {
+    width: auto;
+    min-width: 80px;
+  }
+}
+
+/* Version icônes (alternative) */
+.edit-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px 8px;
+  color: #3498db;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.edit-icon-btn:hover {
+  color: #2980b9;
+  background-color: rgba(52, 152, 219, 0.1);
+  transform: scale(1.1);
+}
+
+.delete-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px 8px;
+  color: #e74c3c;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.delete-icon-btn:hover {
+  color: #c0392b;
+  background-color: rgba(231, 76, 60, 0.1);
+  transform: scale(1.1);
+}
+
+/* Style pour le bouton Annuler en mode édition */
+#cancelEditBtn {
+  background-color: transparent;
+  color: #6c757d;
+  border: 1px solid #6c757d;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#cancelEditBtn:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+  border-color: #495057;
+}
+
+/* Style pour la section de tri */
+.filter-section {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-section label {
+  font-weight: 600;
+  color: #007b83;
+  margin: 0;
+}
+
+.filter-section select {
+  width: auto;
+  min-width: 200px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 0.95rem;
+}
+
+/* Ajustement responsive */
+@media screen and (max-width: 600px) {
+  .filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .filter-section select {
+    width: 100%;
+  }
+}
+
+/* Style pour le bouton Ma To Do */
+.todo-button-container {
+  text-align: center;
+  margin: 2rem 0 1rem;
+}
+
+.todo-button {
+  display: inline-block;
+  background-color: #007b83;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 123, 131, 0.3);
+  border: 2px solid transparent;
+  min-width: 250px;
+  text-align: center;
+}
+
+.todo-button:hover {
+  background-color: #009da5;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 123, 131, 0.4);
+  color: white;
+}
+
+.todo-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 123, 131, 0.3);
+}
+
+/* Effet de pulsation douce */
+@keyframes pulse {
+  0% { box-shadow: 0 6px 20px rgba(0, 123, 131, 0.3); }
+  50% { box-shadow: 0 6px 25px rgba(0, 123, 131, 0.5); }
+  100% { box-shadow: 0 6px 20px rgba(0, 123, 131, 0.3); }
+}
+
+.todo-button {
+  animation: pulse 2s infinite;
+}
+
+/* Version responsive */
+@media screen and (max-width: 600px) {
+  .todo-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Optionnel : Ajouter une icône d'emoji différente */
+.todo-button::before {
+  content: "📋 ";
+  margin-right: 8px;
+  font-size: 1.3rem;
+}
