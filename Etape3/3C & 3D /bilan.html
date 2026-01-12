@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilan des tâches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page">
+  <header>
+    <h1>Bilan des tâches</h1>
+    <p class="baseline">Tableau récapitulatif + mise à jour du statut (archivage)</p>
+  </header>
+
+  <main>
+    <p class="navlink" style="text-align:right;">
+      <a href="index.html">⬅ Retour au formulaire</a>
+    </p>
+
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Priorité</th>
+          <th>Statut</th>
+          <th>Catégorie</th>
+          <th>Date création</th>
+          <th>Date échéance</th>
+          <th>Actions (statut)</th>
+        </tr>
+      </thead>
+      <tbody id="tasksTbody">
+        <!-- Injecté en JS -->
+      </tbody>
+    </table>
+
+    <p id="emptyMsg" style="margin-top:1rem;"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Équipe 3 — Yamina, Sarah, Carole & Fanny</p>
+  </footer>
+
+  <!-- Étape 1E : Données JSON déclarées avec let -->
+  <script>
+    let listePriorites = [
+      {"idPriorite":"1","priorite":"Très importante"},
+      {"idPriorite":"2","priorite":"Importante"},
+      {"idPriorite":"3","priorite":"Moyenne"},
+      {"idPriorite":"4","priorite":"Peu importante"},
+      {"idPriorite":"5","priorite":"Optionnelle"}
+    ];
+
+    let listeStatuts = [
+      {"idStatut":"1","statut":"En cours"},
+      {"idStatut":"2","statut":"Terminée"},
+      {"idStatut":"3","statut":"Annulée"}
+    ];
+
+    let listeCategories = [
+      {"idCategorie":"1","categorie":"Travail"},
+      {"idCategorie":"2","categorie":"Personnel"},
+      {"idCategorie":"3","categorie":"Études"},
+      {"idCategorie":"4","categorie":"Loisirs"}
+    ];
+  </script>
+
+  <!-- 3C + 3D -->
+  <script src="bilan.js"></script>
+</body>
+</html>
